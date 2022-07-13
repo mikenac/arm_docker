@@ -29,6 +29,7 @@ jobs:
       uses: docker/setup-buildx-action@v1
     - name: Build the Docker image
       run: |
+        docker login -u=${{ secrets.DOCKER_USER }} -p=${{ secrets.DOCKER_PASS }}
         declare -a StringArray=("amz" "deb" "ubuntu")
         for dist in ${StringArray[@]}; do
           echo "**** Cross building for distro: ${dist}. ****"
