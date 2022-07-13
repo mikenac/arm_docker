@@ -27,6 +27,10 @@ jobs:
       # https://github.com/docker/setup-buildx-action
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
-    - name: Build the Docker image
+    - name: Build the Amazon Docker Image
       run: docker buildx build  . --file amz/Dockerfile --tag mnacey/arm-test:amz --platform linux/amd64,linux/arm64 --push
+    - name: Build the Debian Docker Image
+      run: docker buildx build  . --file deb/Dockerfile --tag mnacey/arm-test:deb --platform linux/amd64,linux/arm64 --push
+    - name: Build the Ubuntu Docker Image
+      run: docker buildx build  . --file ubuntu/Dockerfile --tag mnacey/arm-test-test:ubuntu --platform linux/amd64,linux/arm64 --push
 
