@@ -21,4 +21,4 @@ jobs:
       with:
         version: latest
     - name: Build the Docker image
-      run: docker buildx build  . --file amz/Dockerfile --tag local/test:amz --platform linux/amd6,linux/arm64
+      run: docker buildx build  . --file amz/Dockerfile --tag local/test:amz --platform linux/amd64,linux/arm64
