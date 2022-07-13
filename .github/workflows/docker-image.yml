@@ -32,5 +32,5 @@ jobs:
     - name: Build the Debian Docker Image
       run: docker buildx build  . --file deb/Dockerfile --tag mnacey/arm-test:deb --platform linux/amd64,linux/arm64 --push
     - name: Build the Ubuntu Docker Image
-      run: docker buildx build  . --file ubuntu/Dockerfile --tag mnacey/arm-test-test:ubuntu --platform linux/amd64,linux/arm64 --push
+      run: docker buildx build  . --file ubuntu/Dockerfile --tag mnacey/arm-test:ubuntu --platform linux/amd64,linux/arm64 --push
 
