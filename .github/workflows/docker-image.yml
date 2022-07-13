@@ -28,11 +28,5 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
     - name: Build the Docker image
-      run: |
-        docker login -u=${{ secrets.DOCKER_USER }} -p=${{ secrets.DOCKER_PASS }}
-        declare -a StringArray=("amz" "deb" "ubuntu")
-        for dist in ${StringArray[@]}; do
-          echo "**** Cross building for distro: ${dist}. ****"
-          docker buildx build --platform "linux/amd64,linux/arm64" -t local/test:${dist} . -f ${dist}/Dockerfile --push
-        done
+      run: docker buildx build  . --file amz/Dockerfile --tag mnacey/arm-test:amz --platform linux/amd64,linux/arm64 --push
 
