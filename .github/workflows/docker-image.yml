@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dist: ['amz', 'deb']
+        dist: ['amz']
     steps:
     - name: checkout code
       uses: actions/checkout@v3
@@ -32,10 +32,5 @@ jobs:
       uses: docker/setup-buildx-action@v1
     - name: Build the ${{ matrix.dist }} Docker Image
       run: docker buildx build  . --file ${{ matrix.dist }}/Dockerfile --tag mnacey/arm-test:${{ matrix.dist}} --platform linux/amd64,linux/arm64 --push
-    # - name: Build the Amazon Docker Image
-    #   run: docker buildx build  . --file amz/Dockerfile --tag mnacey/arm-test:amz --platform linux/amd64,linux/arm64 --push
-    # - name: Build the Debian Docker Image
-    #   run: docker buildx build  . --file deb/Dockerfile --tag mnacey/arm-test:deb --platform linux/amd64,linux/arm64 --push
-    # - name: Build the Ubuntu Docker Image
-    #   run: docker buildx build  . --file ubuntu/Dockerfile --tag mnacey/arm-test:ubuntu --platform linux/amd64,linux/arm64 --push
+
 
