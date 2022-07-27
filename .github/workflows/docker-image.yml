@@ -30,7 +30,9 @@ jobs:
       # https://github.com/docker/setup-buildx-action
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v1
-    - name: Build the ${{ matrix.dist }} Docker Image
-      run: docker buildx build  . --file ${{ matrix.dist }}/Dockerfile --tag mnacey/arm-test:${{ matrix.dist}} --platform linux/amd64,linux/arm64 --push
+    - name: Build the ${{ matrix.dist }} Docker Image JDK 11
+      run: docker buildx build  . --file ${{ matrix.dist }}/Dockerfile --tag mnacey/arm-test:${{ matrix.dist}} --tag mnacey/arm-test:${{ matrix.dist}}-11 --platform linux/amd64,linux/arm64 --push
+    - name: Build the ${{ matrix.dist }} Docker Image JDK 17
+      run: docker buildx build  . --file ${{ matrix.dist }}/Dockerfile --tag mnacey/arm-test:${{ matrix.dist}}-17 --platform linux/amd64,linux/arm64 --push
 
 
